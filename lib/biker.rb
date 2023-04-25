@@ -21,6 +21,10 @@ class Biker
   end
 
   def personal_record(ride)
-    @rides[ride].min_by {|time| time }
+    if @max_distance >= ride.total_distance
+      @rides[ride].min_by {|time| time }
+    else
+      false
+    end
   end
 end
