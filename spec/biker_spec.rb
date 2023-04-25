@@ -15,5 +15,12 @@ RSpec.describe Biker do
     end
   end
 
-  
+  describe "#learn_terrain!(terrain)" do
+    it "adds a new terrain to bikers acceptable_terrain" do
+      @biker.learn_terrain!(:gravel)
+      @biker.learn_terrain!(:hills)
+
+      expect(@biker.acceptable_terrain).to eq([:gravel, :hills])
+    end
+  end
 end
