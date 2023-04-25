@@ -17,4 +17,8 @@ class Biker
   def log_ride(ride, time)
     @rides[ride] << time
   end
+
+  def personal_record(ride)
+    @rides[ride].min_by {|time| time }
+  end
 end
