@@ -21,4 +21,14 @@ class BikeClub
       return biker if rides = num_of_rides.values.max
     end
   end
+
+  def best_time(ride)
+    best_times = Hash.new
+    @bikers.each do |biker|
+      if biker.rides.include?(ride)
+        best_times[biker] = biker.personal_record(ride)
+      end
+    end
+    best_times.keys.last
+  end
 end
