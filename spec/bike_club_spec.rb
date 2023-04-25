@@ -46,4 +46,25 @@ RSpec.describe BikeClub do
       expect(@bike_club1.most_rides).to eq(@biker1)
     end
   end
+
+  describe "#best_time(ride)" do
+    it "returns the biker with the best time of the given ride" do
+      @bike_club1.add_biker(@biker1)
+      @bike_club1.add_biker(@biker2)
+      @biker1.learn_terrain!(:gravel)
+      @biker1.learn_terrain!(:hills)
+      @biker2.learn_terrain!(:gravel)
+      @biker2.learn_terrain!(:hills)
+      @biker1.log_ride(@ride1, 92.5)
+      @biker1.log_ride(@ride1, 91.1)
+      @biker1.log_ride(@ride2, 60.9)
+      @biker1.log_ride(@ride2, 61.6)
+      @biker2.log_ride(@ride1, 97.0)
+      @biker2.log_ride(@ride2, 67.0)
+      @biker2.log_ride(@ride2, 59.7)
+
+      expect(@bike_club1.best_time(@ride1)).to eq(@biker1)
+      expect(@bike_club1.best_time(@ride2)).to eq(@biker2)
+    end
+  end
 end
